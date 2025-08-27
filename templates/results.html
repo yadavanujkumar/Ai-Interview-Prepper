@@ -199,6 +199,251 @@
     </div>
 </div>
 
+<!-- Enhanced Study Resources Section -->
+{% if study_resources %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card border-success">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0"><i class="fas fa-graduation-cap me-2"></i>Personalized Study Resources & Learning Path</h4>
+            </div>
+            <div class="card-body">
+                
+                <!-- Priority Skills -->
+                {% if study_resources.priority_skills %}
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-target me-2"></i>Priority Skills to Develop</h5>
+                        <div class="d-flex flex-wrap">
+                            {% for skill in study_resources.priority_skills %}
+                                <span class="badge bg-warning text-dark me-2 mb-2 fs-6">{{ skill.title() }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        {% if study_resources.daily_focus %}
+                        <h6><i class="fas fa-calendar-day me-2"></i>Daily Focus Areas</h6>
+                        <ul class="list-unstyled">
+                            {% for focus in study_resources.study_schedule.daily_focus %}
+                                <li><i class="fas fa-clock text-primary me-1"></i>{{ focus }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Learning Path -->
+                {% if study_resources.learning_path %}
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5><i class="fas fa-route me-2"></i>Recommended Learning Path: {{ study_resources.learning_path.title }}</h5>
+                        <div class="alert alert-info">
+                            <strong>Duration:</strong> {{ study_resources.learning_path.duration }} | 
+                            <strong>Difficulty:</strong> {{ study_resources.learning_path.difficulty }}
+                        </div>
+                        <div class="row">
+                            {% for topic in study_resources.learning_path.topics %}
+                            <div class="col-md-6 mb-2">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <span>{{ topic }}</span>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Recommended Books -->
+                {% if study_resources.recommended_books %}
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5><i class="fas fa-book me-2"></i>Recommended Books</h5>
+                        <div class="row">
+                            {% for book in study_resources.recommended_books %}
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">{{ book.title }}</h6>
+                                        <p class="card-text">
+                                            <small class="text-muted">by {{ book.author }}</small><br>
+                                            <span class="badge bg-secondary">{{ book.difficulty }}</span><br>
+                                            <strong>Focus:</strong> {{ book.focus }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Online Courses -->
+                {% if study_resources.online_courses %}
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5><i class="fas fa-laptop me-2"></i>Online Learning Platforms</h5>
+                        <div class="row">
+                            {% for course in study_resources.online_courses %}
+                            <div class="col-md-6 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title">{{ course.name }}</h6>
+                                        <p class="card-text">
+                                            <strong>Type:</strong> {{ course.type }}<br>
+                                            <strong>Focus:</strong> {{ course.focus }}<br>
+                                            <strong>Cost:</strong> <span class="badge bg-info">{{ course.cost }}</span>
+                                        </p>
+                                        <a href="{{ course.url }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                                            <i class="fas fa-external-link-alt me-1"></i>Visit Platform
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Practice Projects -->
+                {% if study_resources.practice_projects %}
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5><i class="fas fa-project-diagram me-2"></i>Hands-on Practice Projects</h5>
+                        {% for project in study_resources.practice_projects %}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h6 class="card-title">{{ project.title }}</h6>
+                                <p class="card-text">{{ project.description }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="badge bg-secondary me-2">{{ project.difficulty }}</span>
+                                        {% for tech in project.technologies %}
+                                            <span class="badge bg-outline-primary me-1">{{ tech }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- 8-Week Study Schedule -->
+                {% if study_resources.study_schedule %}
+                <div class="row">
+                    <div class="col-12">
+                        <h5><i class="fas fa-calendar-alt me-2"></i>8-Week Study Schedule</h5>
+                        <div class="row">
+                            {% for period, activities in study_resources.study_schedule.items() %}
+                                {% if period != 'daily_focus' %}
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h6 class="mb-0">{{ period.replace('_', ' ').title() }}</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-unstyled mb-0">
+                                                {% for activity in activities %}
+                                                    <li class="mb-1"><i class="fas fa-arrow-right text-primary me-2"></i>{{ activity }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Enhanced Interview Preparation Guide -->
+{% if interview_guide %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card border-info">
+            <div class="card-header bg-info text-white">
+                <h4 class="mb-0"><i class="fas fa-user-tie me-2"></i>Interview Preparation Guide</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- Technical Preparation -->
+                    <div class="col-md-6 mb-4">
+                        <h5><i class="fas fa-cogs me-2"></i>Technical Preparation</h5>
+                        <ul class="list-group list-group-flush">
+                            {% for tip in interview_guide.technical_preparation %}
+                            <li class="list-group-item border-0 px-0">
+                                <i class="fas fa-check text-success me-2"></i>{{ tip }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    
+                    <!-- Behavioral Preparation -->
+                    <div class="col-md-6 mb-4">
+                        <h5><i class="fas fa-users me-2"></i>Behavioral Preparation</h5>
+                        <ul class="list-group list-group-flush">
+                            {% for tip in interview_guide.behavioral_preparation %}
+                            <li class="list-group-item border-0 px-0">
+                                <i class="fas fa-check text-success me-2"></i>{{ tip }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Domain-Specific Tips -->
+                {% if interview_guide.domain_specific_tips %}
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5><i class="fas fa-lightbulb me-2"></i>Domain-Specific Tips</h5>
+                        <div class="alert alert-warning">
+                            <ul class="mb-0">
+                                {% for tip in interview_guide.domain_specific_tips %}
+                                <li>{{ tip }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Common Mistakes & Day Before Checklist -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-exclamation-triangle text-warning me-2"></i>Common Mistakes to Avoid</h5>
+                        <ul class="list-unstyled">
+                            {% for mistake in interview_guide.common_mistakes %}
+                            <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>{{ mistake }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-tasks me-2"></i>Day Before Checklist</h5>
+                        <ul class="list-unstyled">
+                            {% for item in interview_guide.day_before_checklist %}
+                            <li class="mb-2"><i class="fas fa-check-square text-success me-2"></i>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 <!-- Action Buttons -->
 <div class="row">
     <div class="col-12 text-center">

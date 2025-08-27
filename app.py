@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 from utils.document_processor import DocumentProcessor
 from utils.ai_analyzer import AIAnalyzer
 from utils.interview_generator import InterviewGenerator
+from services.study_resources_service import StudyResourcesService
 import tempfile
 
 app = Flask(__name__)
@@ -19,10 +20,21 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
 # Ensure upload directory exists
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# Initialize processors
+# Initialize processors and services
 doc_processor = DocumentProcessor()
 ai_analyzer = AIAnalyzer()
 interview_gen = InterviewGenerator()
+study_service = StudyResourcesService()
+
+# Register API blueprints
+from api import api_v1, study_resources_bp, interview_bp
+from api.analysis_routes import *
+from api.study_resources_routes import *
+from api.interview_routes import *
+
+app.register_blueprint(api_v1)
+app.register_blueprint(study_resources_bp)
+app.register_blueprint(interview_bp)
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -75,10 +87,24 @@ def upload_files():
         # Perform AI analysis
         analysis_result = ai_analyzer.analyze_fit(jd_text, cv_text)
         
+        # Enhance with study resources
+        domain = analysis_result.get('job_analysis', {}).get('domain', 'general')
+        missing_skills = analysis_result.get('recommendations', {}).get('skills_to_develop', [])
+        
+        # Add comprehensive study resources
+        study_recommendations = study_service.get_personalized_recommendations(
+            domain, missing_skills, 'intermediate'
+        )
+        
+        # Add interview preparation guide
+        interview_guide = study_service.get_interview_preparation_guide(domain)
+        
         return render_template('results.html', 
                              jd_text=jd_text[:500] + "..." if len(jd_text) > 500 else jd_text,
                              cv_text=cv_text[:500] + "..." if len(cv_text) > 500 else cv_text,
-                             analysis=analysis_result)
+                             analysis=analysis_result,
+                             study_resources=study_recommendations,
+                             interview_guide=interview_guide)
 
     except Exception as e:
         flash(f'Error processing files: {str(e)}')
@@ -102,6 +128,20 @@ def generate_interview(difficulty):
     except Exception as e:
         flash(f'Error generating interview: {str(e)}')
         return redirect(url_for('index'))
+
+@app.route('/study-resources')
+def study_resources():
+    """Study resources page"""
+    domain = request.args.get('domain', 'general')
+    resources = study_service.get_resources_by_domain(domain)
+    learning_path = study_service.get_learning_path(domain)
+    interview_guide = study_service.get_interview_preparation_guide(domain)
+    
+    return render_template('study_resources.html', 
+                         domain=domain,
+                         resources=resources,
+                         learning_path=learning_path,
+                         interview_guide=interview_guide)
 
 @app.route('/api/analyze', methods=['POST'])
 def api_analyze():
