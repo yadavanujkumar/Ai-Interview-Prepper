@@ -1,0 +1,316 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="study-resources-component">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-primary">
+                    <i class="fas fa-graduation-cap me-2"></i>Study Resources & Learning Paths
+                </h2>
+                <div class="domain-selector">
+                    <select class="form-select domain-filter" aria-label="Select Domain">
+                        <option value="general" {% if domain == 'general' %}selected{% endif %}>General</option>
+                        <option value="software_engineering" {% if domain == 'software_engineering' %}selected{% endif %}>Software Engineering</option>
+                        <option value="data_science" {% if domain == 'data_science' %}selected{% endif %}>Data Science</option>
+                        <option value="product_management" {% if domain == 'product_management' %}selected{% endif %}>Product Management</option>
+                        <option value="healthcare" {% if domain == 'healthcare' %}selected{% endif %}>Healthcare</option>
+                        <option value="education" {% if domain == 'education' %}selected{% endif %}>Education</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle me-2"></i>
+        <strong>Personalized Learning:</strong> These resources are curated for {{ domain.replace('_', ' ').title() }}. 
+        Select a different domain above to see specialized resources for other fields.
+    </div>
+
+    <!-- Learning Paths Section -->
+    {% if learning_path %}
+    <div class="resource-section mb-5">
+        <h3 class="text-success mb-4">
+            <i class="fas fa-route me-2"></i>Recommended Learning Path
+            <button class="btn btn-sm btn-outline-secondary ms-2 resource-toggle" data-target="learning-paths-container">
+                <i class="fas fa-eye me-1"></i>Show Details
+            </button>
+        </h3>
+        
+        <div id="learning-paths-container">
+            <div class="learning-path-card card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">{{ learning_path.title }}</h5>
+                    <div class="text-light">
+                        <small>{{ learning_path.duration }} • {{ learning_path.difficulty }}</small>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="topics-checklist">
+                        {% for topic in learning_path.topics %}
+                        <div class="form-check mb-2">
+                            <input class="form-check-input topic-checkbox" type="checkbox" 
+                                   id="topic-{{ loop.index }}" data-path="{{ learning_path.title }}" data-topic="{{ topic }}">
+                            <label class="form-check-label" for="topic-{{ loop.index }}">
+                                {{ topic }}
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="progress mt-3">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 0%">
+                            <span class="progress-text">0% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Books Section -->
+    {% if resources.books %}
+    <div class="resource-section mb-5">
+        <h3 class="text-primary mb-4">
+            <i class="fas fa-book me-2"></i>Recommended Books
+        </h3>
+        
+        <div id="books-container">
+            <div class="row">
+                {% for book in resources.books %}
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 book-card">
+                        <div class="card-body">
+                            <h6 class="card-title">{{ book.title }}</h6>
+                            <p class="card-text">
+                                <small class="text-muted">by {{ book.author }}</small><br>
+                                <span class="badge bg-secondary">{{ book.difficulty }}</span><br>
+                                <strong>Focus:</strong> {{ book.focus }}
+                            </p>
+                            <button class="btn btn-outline-primary btn-sm" onclick="window.studyResourcesComponent?.addToWishlist('{{ book.title }}')">
+                                <i class="fas fa-bookmark me-1"></i>Add to Wishlist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Online Platforms Section -->
+    {% if resources.online_platforms %}
+    <div class="resource-section mb-5">
+        <h3 class="text-info mb-4">
+            <i class="fas fa-laptop me-2"></i>Online Learning Platforms
+        </h3>
+        
+        <div id="platforms-container">
+            <div class="row">
+                {% for platform in resources.online_platforms %}
+                <div class="col-md-6 mb-3">
+                    <div class="card platform-card">
+                        <div class="card-body">
+                            <h6 class="card-title">{{ platform.name }}</h6>
+                            <p class="card-text">
+                                <strong>Type:</strong> {{ platform.type }}<br>
+                                <strong>Focus:</strong> {{ platform.focus }}<br>
+                                <strong>Cost:</strong> <span class="badge bg-info">{{ platform.cost }}</span>
+                            </p>
+                            <a href="{{ platform.url }}" target="_blank" 
+                               class="btn btn-outline-primary btn-sm external-resource-link" 
+                               data-platform="{{ platform.name }}">
+                                <i class="fas fa-external-link-alt me-1"></i>Visit Platform
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Practice Projects Section -->
+    {% if resources.practice_projects %}
+    <div class="resource-section mb-5">
+        <h3 class="text-warning mb-4">
+            <i class="fas fa-project-diagram me-2"></i>Hands-on Practice Projects
+        </h3>
+        
+        <div id="projects-container">
+            {% for project in resources.practice_projects %}
+            <div class="card mb-3 project-card">
+                <div class="card-body">
+                    <h6 class="card-title">{{ project.title }}</h6>
+                    <p class="card-text">{{ project.description }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="badge bg-secondary me-2">{{ project.difficulty }}</span>
+                            {% for tech in project.technologies %}
+                                <span class="badge bg-outline-primary me-1">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                        <button class="btn btn-sm btn-outline-success" onclick="window.studyResourcesComponent?.startProject({{ loop.index0 }})">
+                            <i class="fas fa-play me-1"></i>Start Project
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Interview Preparation Guide -->
+    {% if interview_guide %}
+    <div class="resource-section mb-5">
+        <h3 class="text-danger mb-4">
+            <i class="fas fa-user-tie me-2"></i>Interview Preparation Guide
+        </h3>
+        
+        <div class="row">
+            <!-- Technical Preparation -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-cogs me-2"></i>Technical Preparation</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            {% for tip in interview_guide.technical_preparation %}
+                            <li class="list-group-item border-0 px-0">
+                                <i class="fas fa-check text-success me-2"></i>{{ tip }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Behavioral Preparation -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-users me-2"></i>Behavioral Preparation</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            {% for tip in interview_guide.behavioral_preparation %}
+                            <li class="list-group-item border-0 px-0">
+                                <i class="fas fa-check text-success me-2"></i>{{ tip }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Domain-Specific Tips -->
+        {% if interview_guide.domain_specific_tips %}
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-lightbulb me-2"></i>Domain-Specific Tips</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning">
+                            <ul class="mb-0">
+                                {% for tip in interview_guide.domain_specific_tips %}
+                                <li>{{ tip }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Common Mistakes & Day Before Checklist -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-exclamation-triangle text-warning me-2"></i>Common Mistakes to Avoid</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            {% for mistake in interview_guide.common_mistakes %}
+                            <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>{{ mistake }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Day Before Checklist</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            {% for item in interview_guide.day_before_checklist %}
+                            <li class="mb-2"><i class="fas fa-check-square text-success me-2"></i>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Action Buttons -->
+    <div class="row">
+        <div class="col-12 text-center">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-primary btn-lg me-3">
+                <i class="fas fa-arrow-left me-2"></i>Back to Analysis
+            </a>
+            <button onclick="window.print()" class="btn btn-outline-secondary btn-lg">
+                <i class="fas fa-print me-2"></i>Print Resources
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Include the study resources component -->
+<script src="{{ url_for('static', filename='js/components/study-resources.js') }}"></script>
+
+<style>
+.resource-section {
+    border-left: 4px solid var(--bs-primary);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+
+.learning-path-card:hover,
+.book-card:hover,
+.platform-card:hover,
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+.progress-text {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.topic-checkbox:checked + label {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+@media print {
+    .btn, .resource-toggle {
+        display: none !important;
+    }
+}
+</style>
+{% endblock %}

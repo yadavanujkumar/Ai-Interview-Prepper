@@ -146,6 +146,48 @@
 </div>
 {% endif %}
 
+<!-- Personalized Questions -->
+{% if questions.personalized %}
+<div class="card mb-4">
+    <div class="card-header bg-info text-white">
+        <h4 class="mb-0">
+            <i class="fas fa-user-check me-2"></i>Personalized Questions
+            <span class="badge bg-light text-dark ms-2">{{ questions.personalized|length }}</span>
+        </h4>
+        <p class="mb-0 mt-2"><small>These questions are specifically tailored to your background and the job requirements</small></p>
+    </div>
+    <div class="card-body">
+        {% for question in questions.personalized %}
+        <div class="question-card mb-4 p-3 border rounded">
+            <div class="d-flex align-items-start">
+                <span class="badge bg-info me-3 mt-1">{{ loop.index }}</span>
+                <div class="flex-grow-1">
+                    <p class="question-text mb-3">{{ question }}</p>
+                    <div class="answer-section">
+                        <button class="btn btn-outline-secondary btn-sm" onclick="toggleAnswer({{ loop.index }}, 'personalized')">
+                            <i class="fas fa-lightbulb me-1"></i>Show Tips
+                        </button>
+                        <div id="personalized-answer-{{ loop.index }}" class="answer-tips mt-3" style="display: none;">
+                            <div class="alert alert-light">
+                                <h6>💡 Personalized Answer Tips:</h6>
+                                <ul class="mb-0">
+                                    <li><strong>Be Specific:</strong> Draw from your actual experience with concrete examples</li>
+                                    <li><strong>Show Impact:</strong> Quantify results and demonstrate the value you delivered</li>
+                                    <li><strong>Connect to Role:</strong> Explicitly link your experience to the job requirements</li>
+                                    <li><strong>Show Growth:</strong> Highlight what you learned and how you've improved</li>
+                                    <li><strong>Be Authentic:</strong> Share genuine challenges and how you overcame them</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
 <!-- Interview Tips -->
 <div class="card bg-light mb-4">
     <div class="card-body">
@@ -201,6 +243,8 @@ function toggleAnswer(questionNum, category) {
             button.innerHTML = '<i class="fas fa-lightbulb me-1"></i>Show STAR Method';
         } else if (category === 'situational') {
             button.innerHTML = '<i class="fas fa-lightbulb me-1"></i>Show Framework';
+        } else if (category === 'personalized') {
+            button.innerHTML = '<i class="fas fa-lightbulb me-1"></i>Show Tips';
         } else {
             button.innerHTML = '<i class="fas fa-lightbulb me-1"></i>Show Tips';
         }
@@ -245,3 +289,13 @@ function generateNewQuestions() {
 }
 </style>
 {% endblock %}
+
+<!-- Include enhanced interview components -->
+<script src="{{ url_for('static', filename='js/components/interview-questions.js') }}"></script>
+<script>
+// Initialize the interview questions component
+document.addEventListener('DOMContentLoaded', function() {
+    // Mark this as an interview questions component for auto-initialization
+    document.body.classList.add('interview-questions-component');
+});
+</script>
