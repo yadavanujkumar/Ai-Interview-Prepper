@@ -1,0 +1,305 @@
+{
+  "google": {
+    "name": "Google",
+    "overview": {
+      "industry": "Technology",
+      "size": "Large (100,000+ employees)",
+      "locations": [
+        "Mountain View, CA",
+        "New York, NY",
+        "Seattle, WA",
+        "Global"
+      ],
+      "founded": 1998,
+      "description": "Multinational technology company specializing in internet services and products"
+    },
+    "interview_process": {
+      "stages": [
+        "Phone/Video Screening",
+        "Technical Phone Interview",
+        "On-site Interviews (4-5 rounds)",
+        "Team Matching"
+      ],
+      "timeline": {
+        "total_duration": "4-6 weeks",
+        "phone_screen": "30-45 minutes",
+        "technical_phone": "45-60 minutes",
+        "onsite": "4-5 hours"
+      },
+      "focus_areas": [
+        "Coding",
+        "System Design",
+        "Behavioral",
+        "Googleyness"
+      ]
+    },
+    "common_questions": [
+      "Why do you want to work at Google?",
+      "Tell me about a time you had to deal with ambiguity.",
+      "Design a system like Google Search.",
+      "Implement a function to reverse a linked list.",
+      "How would you improve Google Maps?",
+      "Describe a time when you had to work with someone difficult.",
+      "What's your favorite Google product and how would you improve it?"
+    ],
+    "technical_focus": [
+      "Data Structures and Algorithms",
+      "System Design",
+      "Coding Proficiency",
+      "Problem Solving",
+      "Scalability"
+    ],
+    "culture": {
+      "values": [
+        "Focus on the user",
+        "Think big",
+        "Innovation",
+        "Collaboration"
+      ],
+      "work_environment": "Fast-paced, collaborative, innovation-focused",
+      "perks": [
+        "Free meals",
+        "On-site gym",
+        "Flexible work arrangements",
+        "20% time for personal projects"
+      ]
+    },
+    "preparation_tips": [
+      "Practice coding problems on LeetCode (focus on medium/hard)",
+      "Study system design fundamentals",
+      "Learn about Google's products and services",
+      "Practice behavioral questions using STAR method",
+      "Review Google's engineering blog and research papers",
+      "Understand distributed systems concepts"
+    ],
+    "salary_info": {
+      "general": {
+        "compensation_philosophy": "Competitive base + equity + bonuses",
+        "negotiation_tips": [
+          "Research market rates",
+          "Highlight unique value",
+          "Be prepared to discuss total compensation"
+        ]
+      },
+      "roles": {
+        "software_engineer": {
+          "base_range": "$130k - $200k+",
+          "total_comp": "$200k - $400k+",
+          "equity": "Significant RSU component"
+        }
+      }
+    },
+    "resources": [
+      "https://careers.google.com",
+      "Google Engineering Blog",
+      "Cracking the Coding Interview book",
+      "System Design Interview book"
+    ],
+    "insider_tips": [
+      "Google values candidates who can think at scale",
+      "Show genuine interest in Google's mission and products",
+      "Be prepared to code on a whiteboard or Google Docs",
+      "Ask clarifying questions before diving into solutions",
+      "Demonstrate leadership and collaboration skills"
+    ],
+    "tags": [
+      "tech",
+      "faang",
+      "software",
+      "engineering",
+      "ai",
+      "search"
+    ]
+  },
+  "amazon": {
+    "name": "Amazon",
+    "overview": {
+      "industry": "E-commerce / Cloud Computing",
+      "size": "Large (1,000,000+ employees)",
+      "locations": [
+        "Seattle, WA",
+        "Global"
+      ],
+      "founded": 1994,
+      "description": "Multinational technology company focusing on e-commerce, cloud computing, and AI"
+    },
+    "interview_process": {
+      "stages": [
+        "Online Assessment",
+        "Phone Screen",
+        "On-site/Virtual Loop (5-6 rounds)"
+      ],
+      "timeline": {
+        "total_duration": "3-5 weeks",
+        "online_assessment": "90 minutes",
+        "phone_screen": "45-60 minutes",
+        "onsite": "5-6 hours"
+      },
+      "focus_areas": [
+        "Leadership Principles",
+        "Technical Skills",
+        "Problem Solving"
+      ]
+    },
+    "common_questions": [
+      "Tell me about a time you had to deal with a difficult customer.",
+      "Describe a situation where you had to work backwards from a goal.",
+      "How do you handle working under pressure?",
+      "Design a recommendation system.",
+      "Implement a LRU cache.",
+      "Tell me about a time you failed.",
+      "Why Amazon?"
+    ],
+    "technical_focus": [
+      "Data Structures and Algorithms",
+      "System Design",
+      "Object-Oriented Design",
+      "Distributed Systems",
+      "AWS Knowledge (for some roles)"
+    ],
+    "culture": {
+      "values": [
+        "Customer Obsession",
+        "Ownership",
+        "Invent and Simplify",
+        "Learn and Be Curious"
+      ],
+      "work_environment": "High-performance, customer-focused, data-driven",
+      "leadership_principles": 16
+    },
+    "preparation_tips": [
+      "Study Amazon's 16 Leadership Principles thoroughly",
+      "Prepare STAR method stories for each principle",
+      "Practice system design questions",
+      "Understand AWS services (if applicable)",
+      "Focus on customer-centric thinking",
+      "Practice coding under time pressure"
+    ],
+    "salary_info": {
+      "general": {
+        "compensation_philosophy": "Competitive total compensation with significant equity",
+        "negotiation_tips": [
+          "Understand the total package",
+          "Consider growth potential",
+          "Negotiate sign-on bonus"
+        ]
+      }
+    },
+    "resources": [
+      "https://amazon.jobs",
+      "Amazon Leadership Principles",
+      "AWS Documentation",
+      "The Everything Store book"
+    ],
+    "insider_tips": [
+      "Every answer should demonstrate leadership principles",
+      "Be specific with metrics and results in your stories",
+      "Show customer obsession in your examples",
+      "Demonstrate bias for action",
+      "Prepare for bar raiser interview"
+    ],
+    "tags": [
+      "tech",
+      "faang",
+      "ecommerce",
+      "aws",
+      "cloud",
+      "leadership"
+    ]
+  },
+  "microsoft": {
+    "name": "Microsoft",
+    "overview": {
+      "industry": "Technology / Software",
+      "size": "Large (200,000+ employees)",
+      "locations": [
+        "Redmond, WA",
+        "Global"
+      ],
+      "founded": 1975,
+      "description": "Multinational technology corporation developing software, services, and solutions"
+    },
+    "interview_process": {
+      "stages": [
+        "Phone/Video Screen",
+        "Technical Interview",
+        "Final Round (As Appropriate)"
+      ],
+      "timeline": {
+        "total_duration": "2-4 weeks",
+        "phone_screen": "30-45 minutes",
+        "technical": "45-60 minutes",
+        "final_round": "3-4 hours"
+      },
+      "focus_areas": [
+        "Technical Skills",
+        "Collaboration",
+        "Growth Mindset"
+      ]
+    },
+    "common_questions": [
+      "Why Microsoft?",
+      "Tell me about a time you had to learn something quickly.",
+      "How would you test this feature?",
+      "Design a chat application.",
+      "Reverse a binary tree.",
+      "Describe a time you disagreed with a team member.",
+      "What motivates you?"
+    ],
+    "technical_focus": [
+      "Data Structures and Algorithms",
+      "System Design",
+      "Software Engineering Practices",
+      ".NET/Azure knowledge (for some roles)",
+      "Problem Solving"
+    ],
+    "culture": {
+      "values": [
+        "Respect",
+        "Integrity",
+        "Accountability",
+        "Inclusive"
+      ],
+      "work_environment": "Collaborative, growth-focused, inclusive",
+      "mission": "Empower every person and organization to achieve more"
+    },
+    "preparation_tips": [
+      "Understand Microsoft's mission and values",
+      "Prepare examples showing growth mindset",
+      "Study common algorithms and data structures",
+      "Learn about Microsoft's products and services",
+      "Practice coding in your preferred language",
+      "Demonstrate collaboration skills"
+    ],
+    "salary_info": {
+      "general": {
+        "compensation_philosophy": "Competitive compensation with strong benefits",
+        "negotiation_tips": [
+          "Consider total package including benefits",
+          "Highlight relevant experience"
+        ]
+      }
+    },
+    "resources": [
+      "https://careers.microsoft.com",
+      "Microsoft Engineering Blog",
+      "Azure Documentation",
+      "Hit Refresh book by Satya Nadella"
+    ],
+    "insider_tips": [
+      "Show genuine passion for technology",
+      "Demonstrate inclusive leadership",
+      "Be open to feedback and learning",
+      "Ask thoughtful questions about the role",
+      "Show how you can contribute to Microsoft's mission"
+    ],
+    "tags": [
+      "tech",
+      "software",
+      "azure",
+      "cloud",
+      "enterprise",
+      "inclusive"
+    ]
+  }
+}

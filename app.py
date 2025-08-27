@@ -31,6 +31,12 @@ from api import api_v1, study_resources_bp, interview_bp
 from api.analysis_routes import *
 from api.study_resources_routes import *
 from api.interview_routes import *
+from api.chat_routes import *
+from api.job_board_routes import *
+from api.analytics_routes import *
+from api.company_routes import *
+from api.salary_routes import *
+from api.localization_routes import *
 
 app.register_blueprint(api_v1)
 app.register_blueprint(study_resources_bp)
@@ -128,6 +134,26 @@ def generate_interview(difficulty):
     except Exception as e:
         flash(f'Error generating interview: {str(e)}')
         return redirect(url_for('index'))
+
+@app.route('/chat')
+def chat():
+    """AI Interview Chat page"""
+    return render_template('chat.html')
+
+@app.route('/analytics')
+def analytics():
+    """Analytics dashboard page"""
+    return render_template('analytics.html')
+
+@app.route('/companies')
+def companies():
+    """Company guides page"""
+    return render_template('companies.html')
+
+@app.route('/salary')
+def salary():
+    """Salary negotiation page"""
+    return render_template('salary.html')
 
 @app.route('/study-resources')
 def study_resources():
