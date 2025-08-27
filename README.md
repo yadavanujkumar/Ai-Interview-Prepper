@@ -1,17 +1,8 @@
 # 🎯 AI Interview Prepper
 
-A modern, intelligent interview preparation platform built with cutting-edge web technologies. Features modular frontend and backend architecture similar to high-tech companies, providing personalized interview preparation across any field or profession.
+A streamlined, API-focused interview preparation platform built with Flask. Features a clean, modular backend architecture with a simple web interface for AI-powered interview analysis.
 
-
-## ✨ Modern Architecture
-
-### Frontend (Modern JavaScript)
-- **⚡ Vite Build System**: Lightning-fast development with hot module replacement
-- **🧩 Component-Based Architecture**: Modular, reusable UI components
-- **📱 Responsive Design**: Mobile-first design with modern CSS Grid/Flexbox
-- **🎨 Design System**: Consistent theming with CSS custom properties
-- **🔄 State Management**: Centralized application state with event bus pattern
-- **📡 API Client**: Modern fetch-based HTTP client with error handling
+## ✨ Simplified Architecture
 
 ### Backend (Flask + Python)
 - **🏭 Application Factory Pattern**: Scalable Flask architecture
@@ -21,213 +12,157 @@ A modern, intelligent interview preparation platform built with cutting-edge web
 - **🔌 RESTful API Design**: Clean, documented API endpoints
 - **🔒 Security**: Input validation, file upload security, and error handling
 
+### Frontend (Minimal Web Interface)
+- **🎨 Simple UI**: Single-page interface using CDN resources
+- **📱 Responsive Design**: Bootstrap-based responsive layout
+- **⚡ API Integration**: Direct API calls for all functionality
+- **🎯 Focused UX**: Clean, functional interface without complexity
+
 ## 🚀 Features
 
 ### Core Functionality
-- **📄 Smart Document Processing**: Upload or paste job descriptions and CVs (PDF, DOCX, TXT)
-- **🤖 AI-Powered Analysis**: Intelligent candidate-job fit analysis
-- **📊 Comprehensive Scoring**: Skills, experience, and education match percentages
-- **🎓 Personalized Recommendations**: Tailored study plans and skill development
-- **❓ Dynamic Mock Interviews**: Domain-specific interview questions
-- **📝 Resume Optimization**: CV improvement suggestions
+- **📄 CV/Job Description Analysis**: AI-powered matching and gap analysis
+- **❓ Interview Question Generation**: Personalized questions based on role requirements
+- **📚 Study Resources**: Curated learning materials by domain
+- **💼 Company Insights**: Interview tips for major companies
+- **💰 Salary Guidance**: Negotiation strategies and market insights
 
-### Enhanced Features
-- **💬 Real-time AI Chat**: Practice interviews with conversational AI
-- **🔗 Job Board Integration**: Import jobs from LinkedIn, Indeed, Glassdoor
-- **📈 Progress Analytics**: Detailed performance tracking and insights
-- **🌍 Multi-language Support**: Practice in multiple languages
-- **🏢 Company-specific Guides**: Tailored preparation for top companies
-- **💰 Salary Negotiation**: Comprehensive negotiation strategies
-
-### Supported Domains
-- Software Engineering & Development
-- Data Science & Analytics  
-- Healthcare & Medical
-- Education & Training
-- Design & Creative
-- Marketing & Sales
-- General Professional Roles
+### API Endpoints
+- `POST /api/analyze` - Analyze CV against job description
+- `POST /interview/generate` - Generate interview questions
+- `GET /api/study-resources` - Get learning resources
+- `GET /api/companies` - Company-specific interview guides
+- `GET /api/salary` - Salary negotiation guidance
+- `POST /api/chat` - AI chat interface
 
 ## 🛠️ Technology Stack
 
-- **Backend**: Python Flask
-- **Frontend**: HTML5, CSS3, Bootstrap 5, JavaScript
-- **Document Processing**: PyPDF2, python-docx
-- **AI Integration**: OpenAI API (optional)
-- **Styling**: Custom CSS with animations and responsive design
+### Backend
+- **Flask 2.3.3** - Web framework
+- **Python 3.8+** - Programming language
+- **OpenAI API** - AI-powered analysis
+- **PyPDF2** - PDF processing
+- **python-docx** - Word document processing
+
+### Frontend
+- **Bootstrap 5.3** - UI framework (CDN)
+- **FontAwesome** - Icons (CDN)
+- **Vanilla JavaScript** - API interactions
 
 ## 📋 Prerequisites
 
-- **Python 3.8+**: For backend services
-- **Node.js 16+**: For frontend build tools
-- **pip**: Python package manager
-- **(Optional)** OpenAI API key for enhanced AI features
+- Python 3.8 or higher
+- OpenAI API key (optional, for AI features)
 
 ## ⚡ Quick Start
 
-### Development Mode (Recommended)
+### Installation
 
-```bash
-# Clone the repository
-git clone https://github.com/yadavanujkumar/Ai-Interview-Prepper.git
-cd Ai-Interview-Prepper
-
-# Run the development script (starts both backend and frontend)
-./dev.sh
-```
-
-This will start:
-- 🐍 **Backend**: http://localhost:5000 (Flask API)
-- ⚡ **Frontend**: http://localhost:3000 (Vite dev server with hot reload)
-
-### Manual Setup
-
-1. **Install Python Dependencies**
+1. **Clone the repository**
    ```bash
-   pip install -r requirements.txt
+   git clone https://github.com/yadavanujkumar/Ai-Interview-Prepper.git
+   cd Ai-Interview-Prepper
    ```
 
-2. **Install Frontend Dependencies**
+2. **Install Python Dependencies**
    ```bash
-   npm install
+   pip install -r requirements.txt
    ```
 
 3. **Set Up Environment** (optional)
    ```bash
    cp .env.example .env
-   # Edit .env file with your configuration
+   # Edit .env file with your OpenAI API key
    ```
 
-4. **Start Backend**
+4. **Run the Application**
    ```bash
    python app.py
    ```
 
-5. **Start Frontend Development Server** (in another terminal)
-   ```bash
-   npm run dev
-   ```
-
-### Production Build
-
-```bash
-# Build frontend assets
-npm run build
-
-# Run production server
-python app.py
-```
+5. **Access the Interface**
    - Open your browser and navigate to `http://localhost:5000`
+   - Use the simple web interface or call API endpoints directly
 
 ## 🎯 How to Use
 
-### 1. Upload Documents
-- **Job Description**: Upload a file or paste the text of the job posting
-- **CV/Resume**: Upload your resume or paste your CV content
-- Supported formats: PDF, DOCX, TXT
+### Web Interface
+1. Navigate to `http://localhost:5000`
+2. Paste or upload your job description and CV
+3. Click "Analyze Fit" to get AI-powered analysis
+4. Generate interview questions and access study resources
 
-### 2. Get Analysis
-- Receive a comprehensive fit score (0-100%)
-- View breakdown by skills, experience, and education
-- See identified gaps and strengths
+### API Usage
+```bash
+# Analyze CV fit
+curl -X POST http://localhost:5000/api/analyze \
+  -H "Content-Type: application/json" \
+  -d '{"job_description": "...", "cv_text": "..."}'
 
-### 3. Review Recommendations
-- **Skills to Develop**: Missing technical and soft skills
-- **Study Plan**: Personalized learning suggestions
-- **Resume Improvements**: Tips for better CV alignment
+# Generate interview questions
+curl -X POST http://localhost:5000/interview/generate \
+  -H "Content-Type: application/json" \
+  -d '{"job_description": "...", "cv_text": "...", "difficulty": 2}'
 
-### 4. Practice Interviews
-- Choose difficulty level (Easy, Medium, Hard)
-- Get domain-specific questions:
-  - **Technical**: Role-specific technical questions
-  - **Behavioral**: STAR method scenarios
-  - **Situational**: Problem-solving scenarios
+# Get study resources
+curl http://localhost:5000/api/study-resources?domain=technology
+
+# Get company guides
+curl http://localhost:5000/api/companies
+```
 
 ## 📁 Project Structure
 
 ```
 Ai-Interview-Prepper/
-├── app.py                 # Main Flask application
-├── requirements.txt       # Python dependencies
-├── config.py             # Configuration settings
-├── .env.example          # Environment variables template
-├── .gitignore           # Git ignore rules
-├── utils/               # Utility modules
-│   ├── __init__.py
-│   ├── document_processor.py  # Document text extraction
-│   ├── ai_analyzer.py         # Job-CV analysis engine
-│   └── interview_generator.py # Mock interview questions
-├── templates/           # HTML templates
-│   ├── base.html       # Base template
-│   ├── index.html      # Homepage
-│   ├── results.html    # Analysis results
-│   └── interview.html  # Mock interview
-├── static/             # Static assets
-│   ├── css/
-│   │   └── style.css   # Custom styles
-│   └── js/
-│       └── app.js      # JavaScript functionality
-└── uploads/            # File upload directory (auto-created)
+├── app/                    # Flask application package
+│   ├── __init__.py        # Application factory
+│   ├── core/              # Core configurations and utilities
+│   │   ├── config.py      # Configuration management
+│   │   ├── extensions.py  # Flask extensions
+│   │   └── utils.py       # Utility functions
+│   └── routes/            # Route blueprints
+│       ├── main.py        # Main routes and UI
+│       └── features.py    # Feature API routes
+├── api/                   # API route modules
+│   ├── interview_routes.py
+│   ├── study_resources_routes.py
+│   └── ...
+├── services/              # Business logic services
+├── utils/                 # Utility modules
+│   ├── ai_analyzer.py
+│   ├── document_processor.py
+│   └── interview_generator.py
+├── tests/                 # Test files
+├── uploads/               # File uploads directory
+├── app.py                # Application entry point
+└── requirements.txt      # Python dependencies
 ```
 
 ## ⚙️ Configuration
 
-### Environment Variables
+Set environment variables in `.env` file:
 
-Create a `.env` file from `.env.example`:
-
-```bash
-# Flask configuration
-SECRET_KEY=your-secret-key-here
+```env
+SECRET_KEY=your-secret-key
+OPENAI_API_KEY=your-openai-api-key
 FLASK_ENV=development
-
-# OpenAI API (optional - app works without it)
-OPENAI_API_KEY=your-openai-api-key-here
 ```
-
-### File Upload Limits
-- Maximum file size: 16MB
-- Supported formats: PDF, DOCX, TXT
-- Files are processed temporarily and not stored permanently
-
-## 🎨 Features in Detail
-
-### Intelligent Analysis Engine
-- **Domain Detection**: Automatically identifies job domain/industry
-- **Skill Extraction**: Finds relevant technical and soft skills
-- **Experience Calculation**: Estimates years of experience from CV
-- **Education Assessment**: Evaluates educational qualifications
-- **Fit Scoring**: Multi-dimensional scoring algorithm
-
-### Mock Interview Questions
-- **Dynamic Generation**: Questions tailored to specific job and candidate
-- **Multiple Difficulty Levels**: Easy, Medium, Hard
-- **Answer Frameworks**: STAR method for behavioral, structured approach for technical
-- **Print-Friendly**: Clean formatting for offline practice
-
-### Responsive Design
-- **Mobile-Friendly**: Works on all device sizes
-- **Dark Mode Ready**: Prepared for future dark mode implementation
-- **Accessibility**: Screen reader friendly with proper ARIA labels
-- **Print Optimization**: Clean printing for results and questions
 
 ## 🔮 Future Enhancements
 
-- [x] Real-time AI chat for interview practice
-- [x] Integration with job boards (LinkedIn, Indeed)
-- [x] Progress tracking and analytics
-- [x] Multi-language support
-- [x] Company-specific preparation guides
-- [x] Salary negotiation guidance
-- [ ] Video interview simulation
-- [ ] Interview scheduling integration
+- **Database Integration**: Store user sessions and analysis history
+- **Authentication System**: User accounts and personalized recommendations
+- **Enhanced AI Features**: More sophisticated analysis and recommendations
+- **Mobile App**: Native mobile applications
+- **Analytics Dashboard**: Detailed performance tracking
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 ## 📄 License
@@ -236,24 +171,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Bootstrap for the responsive UI framework
-- Flask for the lightweight web framework
-- OpenAI for AI capabilities (optional integration)
-- Font Awesome for icons
-- All contributors and users providing feedback
+- OpenAI for providing powerful AI capabilities
+- Flask community for the excellent web framework
+- Bootstrap for the responsive UI components
 
 ## 📞 Support
 
-If you encounter any issues or have questions:
-
-1. Check the [Issues](https://github.com/yadavanujkumar/Ai-Interview-Prepper/issues) page
-2. Create a new issue with detailed description
-3. Provide sample inputs and expected outputs when reporting bugs
+If you encounter any issues or have questions, please open an issue on GitHub.
 
 ## 🌟 Show Your Support
 
-If this project helped you prepare for your interview, please give it a ⭐ on GitHub!
-
----
-
-**Built with ❤️ to help you ace your interviews!**
+Give a ⭐️ if this project helped you!

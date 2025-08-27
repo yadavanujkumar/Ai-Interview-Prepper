@@ -31,10 +31,6 @@ class Config:
     # API Configuration
     API_TITLE = 'AI Interview Prepper API'
     API_VERSION = 'v1'
-    
-    # Frontend build configuration
-    STATIC_FOLDER = 'static'
-    TEMPLATES_FOLDER = 'templates'
 
 
 class DevelopmentConfig(Config):
