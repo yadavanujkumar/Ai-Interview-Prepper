@@ -11,9 +11,7 @@ import os
 
 def create_app(config_class=Config):
     """Application factory pattern for creating Flask app instances"""
-    app = Flask(__name__, 
-                template_folder='../templates',
-                static_folder='../static')
+    app = Flask(__name__)
     
     # Load configuration
     app.config.from_object(config_class)
