@@ -9,8 +9,6 @@ import { EventBus } from './core/event-bus.js';
 import { ComponentRegistry } from './core/component-registry.js';
 
 // Import components
-import { InterviewQuestionsComponent } from './components/interview-questions.js';
-import { StudyResourcesComponent } from './components/study-resources.js';
 import { FileUploadComponent } from './components/file-upload.js';
 
 // Initialize global app state
@@ -52,8 +50,6 @@ class Application {
     registerComponents() {
         const { components } = window.App;
         
-        components.register('interview-questions', InterviewQuestionsComponent);
-        components.register('study-resources', StudyResourcesComponent);
         components.register('file-upload', FileUploadComponent);
     }
 
