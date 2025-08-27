@@ -2,7 +2,6 @@
 
 A modern, intelligent interview preparation platform built with cutting-edge web technologies. Features modular frontend and backend architecture similar to high-tech companies, providing personalized interview preparation across any field or profession.
 
-![AI Interview Prepper](https://github.com/user-attachments/assets/9c1388ce-2ec3-42f8-88d6-c0c003a834bb)
 
 ## ✨ Modern Architecture
 
