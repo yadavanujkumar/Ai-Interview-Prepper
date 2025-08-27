@@ -135,20 +135,34 @@
                 <h4 class="text-primary">Ready for Mock Interview Practice?</h4>
                 <p class="lead">Practice with AI-generated questions tailored to this job</p>
                 <div class="btn-group" role="group">
-                    <a href="{{ url_for('generate_interview', difficulty=1) }}?jd={{ jd_text|urlencode }}&cv={{ cv_text|urlencode }}" 
-                       class="btn btn-outline-success">
-                        <i class="fas fa-star me-2"></i>Easy
-                    </a>
-                    <a href="{{ url_for('generate_interview', difficulty=2) }}?jd={{ jd_text|urlencode }}&cv={{ cv_text|urlencode }}" 
-                       class="btn btn-outline-warning">
-                        <i class="fas fa-star me-2"></i><i class="fas fa-star me-2"></i>Medium
-                    </a>
-                    <a href="{{ url_for('generate_interview', difficulty=3) }}?jd={{ jd_text|urlencode }}&cv={{ cv_text|urlencode }}" 
-                       class="btn btn-outline-danger">
-                        <i class="fas fa-star me-2"></i><i class="fas fa-star me-2"></i><i class="fas fa-star me-2"></i>Hard
-                    </a>
+                        <a href="{{ url_for('main.generate_interview', difficulty=1) }}?jd={{ jd_text|urlencode }}&cv={{ cv_text|urlencode }}" 
+                           class="btn btn-outline-success">
+                            <i class="fas fa-star me-2"></i>Easy
+                        </a>
+                        <a href="{{ url_for('main.generate_interview', difficulty=2) }}?jd={{ jd_text|urlencode }}&cv={{ cv_text|urlencode }}" 
+                           class="btn btn-outline-warning">
+                            <i class="fas fa-star me-2"></i><i class="fas fa-star me-2"></i>Medium
+                        </a>
+                        <a href="{{ url_for('main.generate_interview', difficulty=3) }}?jd={{ jd_text|urlencode }}&cv={{ cv_text|urlencode }}" 
+                           class="btn btn-outline-danger">
+                            <i class="fas fa-star me-2"></i><i class="fas fa-star me-2"></i><i class="fas fa-star me-2"></i>Hard
+                        </a>
                 </div>
-            </div>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <a href="{{ url_for('main.generate_interview', difficulty=1) }}?jd={{ jd_text|urlencode }}&cv={{ cv_text|urlencode }}" 
+                           class="btn btn-outline-success">
+                            <i class="fas fa-star me-2"></i>Easy
+                        </a>
+                        <a href="{{ url_for('main.generate_interview', difficulty=2) }}?jd={{ jd_text|urlencode }}&cv={{ cv_text|urlencode }}" 
+                           class="btn btn-outline-warning">
+                            <i class="fas fa-star me-2"></i><i class="fas fa-star me-2"></i>Medium
+                        </a>
+                        <a href="{{ url_for('main.generate_interview', difficulty=3) }}?jd={{ jd_text|urlencode }}&cv={{ cv_text|urlencode }}" 
+                           class="btn btn-outline-danger">
+                            <i class="fas fa-star me-2"></i><i class="fas fa-star me-2"></i><i class="fas fa-star me-2"></i>Hard
+                        </a>
+                    </div>
         </div>
     </div>
 </div>
@@ -447,7 +461,7 @@
 <!-- Action Buttons -->
 <div class="row">
     <div class="col-12 text-center">
-        <a href="{{ url_for('index') }}" class="btn btn-outline-primary btn-lg me-3">
+    <a href="{{ url_for('main.index') }}" class="btn btn-outline-primary btn-lg me-3">
             <i class="fas fa-arrow-left me-2"></i>Analyze Another Position
         </a>
         <button onclick="window.print()" class="btn btn-outline-secondary btn-lg">
