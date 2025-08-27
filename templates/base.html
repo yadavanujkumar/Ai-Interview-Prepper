@@ -4,38 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}AI Interview Prepper{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Modern Bootstrap and FontAwesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom styles with CSS variables -->
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    {% block extra_head %}{% endblock %}
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <!-- Modern Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary">
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('index') }}">
-                <i class="fas fa-brain me-2"></i>AI Interview Prepper
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">
+                <i class="fas fa-brain me-2"></i>
+                <span class="text-gradient">AI Interview Prepper</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('index') }}">
+                        <a class="nav-link" href="{{ url_for('main.index') }}" data-nav="home">
                             <i class="fas fa-home me-1"></i>Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('study_resources') }}">
+                        <a class="nav-link" href="{{ url_for('features.study_resources') }}" data-nav="study">
                             <i class="fas fa-graduation-cap me-1"></i>Study Resources
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                           data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-cog me-1"></i>Tools
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/api/v1/health">API Health</a></li>
-                            <li><a class="dropdown-item" href="/api/v1/domains">Supported Domains</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('features.chat') }}">
+                                <i class="fas fa-comments me-2"></i>AI Chat
+                            </a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('features.analytics') }}">
+                                <i class="fas fa-chart-bar me-2"></i>Analytics
+                            </a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('features.companies') }}">
+                                <i class="fas fa-building me-2"></i>Companies
+                            </a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('features.salary') }}">
+                                <i class="fas fa-dollar-sign me-2"></i>Salary
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/api/v1/health">
+                                <i class="fas fa-heartbeat me-2"></i>API Health
+                            </a></li>
+                            <li><a class="dropdown-item" href="/api/v1/domains">
+                                <i class="fas fa-globe me-2"></i>Supported Domains
+                            </a></li>
                         </ul>
                     </li>
                 </ul>
@@ -43,10 +74,31 @@
         </div>
     </nav>
 
+    <!-- Loading indicator -->
+    <div id="global-loading" class="position-fixed top-0 start-0 w-100 h-100 d-none" 
+         style="background: rgba(255,255,255,0.8); z-index: 9999;">
+        <div class="d-flex align-items-center justify-content-center h-100">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error display -->
+    <div id="global-error" class="position-fixed top-0 start-50 translate-middle-x mt-3 d-none" 
+         style="z-index: 10000; max-width: 500px;">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <span id="error-message"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    </div>
+
     <main class="container mt-4">
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <i class="fas fa-info-circle me-2"></i>
                     {% for message in messages %}
                         {{ message }}
                     {% endfor %}
@@ -58,13 +110,34 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="bg-light mt-5 py-4">
-        <div class="container text-center">
-            <p class="mb-0">&copy; 2025 AI Interview Prepper. Built to help you ace your interviews!</p>
+    <!-- Modern Footer -->
+    <footer class="bg-gradient-primary text-white mt-5 py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0">
+                        <i class="fas fa-brain me-2"></i>
+                        &copy; 2025 AI Interview Prepper. Built to help you ace your interviews!
+                    </p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <small class="text-light">
+                        Powered by modern web technologies
+                    </small>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <!-- Modern JavaScript Loading -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Load our modern application -->
+    <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    <!-- Fallback for legacy browsers -->
+    <script nomodule src="{{ url_for('static', filename='js/app.js') }}"></script>
+    
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

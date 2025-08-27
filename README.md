@@ -1,28 +1,48 @@
 # 🎯 AI Interview Prepper
 
-An intelligent interview preparation tool that helps candidates prepare for interviews across any field or profession by analyzing job descriptions and CVs to provide personalized, domain-relevant guidance.
+A modern, intelligent interview preparation platform built with cutting-edge web technologies. Features modular frontend and backend architecture similar to high-tech companies, providing personalized interview preparation across any field or profession.
+
+![AI Interview Prepper](https://github.com/user-attachments/assets/9c1388ce-2ec3-42f8-88d6-c0c003a834bb)
+
+## ✨ Modern Architecture
+
+### Frontend (Modern JavaScript)
+- **⚡ Vite Build System**: Lightning-fast development with hot module replacement
+- **🧩 Component-Based Architecture**: Modular, reusable UI components
+- **📱 Responsive Design**: Mobile-first design with modern CSS Grid/Flexbox
+- **🎨 Design System**: Consistent theming with CSS custom properties
+- **🔄 State Management**: Centralized application state with event bus pattern
+- **📡 API Client**: Modern fetch-based HTTP client with error handling
+
+### Backend (Flask + Python)
+- **🏭 Application Factory Pattern**: Scalable Flask architecture
+- **📦 Blueprint Organization**: Modular route organization
+- **⚙️ Centralized Configuration**: Environment-based configuration management
+- **🛠️ Dependency Injection**: Service-based architecture for easy testing
+- **🔌 RESTful API Design**: Clean, documented API endpoints
+- **🔒 Security**: Input validation, file upload security, and error handling
 
 ## 🚀 Features
 
 ### Core Functionality
-- **📄 Document Analysis**: Upload or paste job descriptions and CVs in multiple formats (PDF, DOCX, TXT)
-- **🤖 AI-Powered Matching**: Intelligent analysis of candidate-job fit across multiple dimensions
-- **📊 Scoring System**: Comprehensive scoring with skills, experience, and education match percentages
-- **🎓 Personalized Recommendations**: Tailored study plans and skill development suggestions
-- **❓ Mock Interview Generator**: Domain-specific interview questions (technical, behavioral, situational)
-- **📝 Resume Optimization**: Suggestions for improving CV alignment with job requirements
+- **📄 Smart Document Processing**: Upload or paste job descriptions and CVs (PDF, DOCX, TXT)
+- **🤖 AI-Powered Analysis**: Intelligent candidate-job fit analysis
+- **📊 Comprehensive Scoring**: Skills, experience, and education match percentages
+- **🎓 Personalized Recommendations**: Tailored study plans and skill development
+- **❓ Dynamic Mock Interviews**: Domain-specific interview questions
+- **📝 Resume Optimization**: CV improvement suggestions
 
-### Enhanced Features (NEW!)
-- **💬 Real-time AI Chat**: Practice interviews with AI interviewer in real-time conversation
-- **🔗 Job Board Integration**: Import job descriptions directly from LinkedIn, Indeed, and other major job boards
-- **📈 Progress Analytics**: Track your improvement with detailed analytics and performance insights
-- **🌍 Multi-language Support**: Practice interviews in multiple languages (English, Spanish, French, German, etc.)
-- **🏢 Company-specific Guides**: Get tailored preparation for specific companies (Google, Amazon, Microsoft, etc.)
-- **💰 Salary Negotiation Guidance**: Comprehensive salary negotiation strategies and market data
+### Enhanced Features
+- **💬 Real-time AI Chat**: Practice interviews with conversational AI
+- **🔗 Job Board Integration**: Import jobs from LinkedIn, Indeed, Glassdoor
+- **📈 Progress Analytics**: Detailed performance tracking and insights
+- **🌍 Multi-language Support**: Practice in multiple languages
+- **🏢 Company-specific Guides**: Tailored preparation for top companies
+- **💰 Salary Negotiation**: Comprehensive negotiation strategies
 
 ### Supported Domains
 - Software Engineering & Development
-- Data Science & Analytics
+- Data Science & Analytics  
 - Healthcare & Medical
 - Education & Training
 - Design & Creative
@@ -39,35 +59,65 @@ An intelligent interview preparation tool that helps candidates prepare for inte
 
 ## 📋 Prerequisites
 
-- Python 3.8 or higher
-- pip package manager
-- (Optional) OpenAI API key for enhanced AI features
+- **Python 3.8+**: For backend services
+- **Node.js 16+**: For frontend build tools
+- **pip**: Python package manager
+- **(Optional)** OpenAI API key for enhanced AI features
 
-## 🔧 Installation
+## ⚡ Quick Start
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yadavanujkumar/Ai-Interview-Prepper.git
-   cd Ai-Interview-Prepper
-   ```
+### Development Mode (Recommended)
 
-2. **Install dependencies**
+```bash
+# Clone the repository
+git clone https://github.com/yadavanujkumar/Ai-Interview-Prepper.git
+cd Ai-Interview-Prepper
+
+# Run the development script (starts both backend and frontend)
+./dev.sh
+```
+
+This will start:
+- 🐍 **Backend**: http://localhost:5000 (Flask API)
+- ⚡ **Frontend**: http://localhost:3000 (Vite dev server with hot reload)
+
+### Manual Setup
+
+1. **Install Python Dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Set up environment variables** (optional)
+2. **Install Frontend Dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set Up Environment** (optional)
    ```bash
    cp .env.example .env
    # Edit .env file with your configuration
    ```
 
-4. **Run the application**
+4. **Start Backend**
    ```bash
    python app.py
    ```
 
-5. **Access the application**
+5. **Start Frontend Development Server** (in another terminal)
+   ```bash
+   npm run dev
+   ```
+
+### Production Build
+
+```bash
+# Build frontend assets
+npm run build
+
+# Run production server
+python app.py
+```
    - Open your browser and navigate to `http://localhost:5000`
 
 ## 🎯 How to Use
