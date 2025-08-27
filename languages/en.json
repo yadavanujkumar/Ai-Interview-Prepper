@@ -1,0 +1,64 @@
+{
+  "app": {
+    "title": "AI Interview Prepper",
+    "subtitle": "Ace Your Next Interview with AI-Powered Practice",
+    "welcome": "Welcome to AI Interview Prepper"
+  },
+  "navigation": {
+    "home": "Home",
+    "practice": "Practice",
+    "progress": "Progress",
+    "study": "Study Resources",
+    "chat": "AI Chat",
+    "settings": "Settings"
+  },
+  "buttons": {
+    "start": "Start",
+    "submit": "Submit",
+    "next": "Next",
+    "previous": "Previous",
+    "save": "Save",
+    "cancel": "Cancel",
+    "upload": "Upload",
+    "analyze": "Analyze",
+    "practice": "Practice",
+    "end_session": "End Session"
+  },
+  "forms": {
+    "job_description": "Job Description",
+    "cv_resume": "CV/Resume",
+    "upload_file": "Upload File",
+    "paste_text": "Paste Text",
+    "difficulty": "Difficulty Level",
+    "domain": "Domain"
+  },
+  "messages": {
+    "upload_success": "File uploaded successfully",
+    "analysis_complete": "Analysis completed",
+    "session_started": "Interview session started",
+    "session_ended": "Interview session ended",
+    "progress_saved": "Progress saved"
+  },
+  "errors": {
+    "file_upload_failed": "File upload failed",
+    "analysis_failed": "Analysis failed",
+    "invalid_input": "Invalid input",
+    "session_not_found": "Session not found"
+  },
+  "interview": {
+    "technical_questions": "Technical Questions",
+    "behavioral_questions": "Behavioral Questions",
+    "follow_up": "Follow-up Questions",
+    "feedback": "Feedback",
+    "performance": "Performance"
+  },
+  "progress": {
+    "total_sessions": "Total Sessions",
+    "time_practiced": "Time Practiced",
+    "questions_answered": "Questions Answered",
+    "average_score": "Average Score",
+    "improvement": "Improvement",
+    "strengths": "Strengths",
+    "areas_to_improve": "Areas to Improve"
+  }
+}

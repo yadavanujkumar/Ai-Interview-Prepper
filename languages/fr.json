@@ -1,0 +1,64 @@
+{
+  "app": {
+    "title": "Préparateur d'Entretien IA",
+    "subtitle": "Réussissez Votre Prochain Entretien avec la Pratique Alimentée par l'IA",
+    "welcome": "Bienvenue au Préparateur d'Entretien IA"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "practice": "Pratique",
+    "progress": "Progrès",
+    "study": "Ressources d'Étude",
+    "chat": "Chat IA",
+    "settings": "Paramètres"
+  },
+  "buttons": {
+    "start": "Commencer",
+    "submit": "Soumettre",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "save": "Sauvegarder",
+    "cancel": "Annuler",
+    "upload": "Télécharger",
+    "analyze": "Analyser",
+    "practice": "Pratiquer",
+    "end_session": "Terminer la Session"
+  },
+  "forms": {
+    "job_description": "Description du Poste",
+    "cv_resume": "CV/Curriculum Vitae",
+    "upload_file": "Télécharger un Fichier",
+    "paste_text": "Coller le Texte",
+    "difficulty": "Niveau de Difficulté",
+    "domain": "Domaine"
+  },
+  "messages": {
+    "upload_success": "Fichier téléchargé avec succès",
+    "analysis_complete": "Analyse terminée",
+    "session_started": "Session d'entretien commencée",
+    "session_ended": "Session d'entretien terminée",
+    "progress_saved": "Progrès sauvegardé"
+  },
+  "errors": {
+    "file_upload_failed": "Échec du téléchargement du fichier",
+    "analysis_failed": "Échec de l'analyse",
+    "invalid_input": "Entrée invalide",
+    "session_not_found": "Session non trouvée"
+  },
+  "interview": {
+    "technical_questions": "Questions Techniques",
+    "behavioral_questions": "Questions Comportementales",
+    "follow_up": "Questions de Suivi",
+    "feedback": "Commentaires",
+    "performance": "Performance"
+  },
+  "progress": {
+    "total_sessions": "Sessions Totales",
+    "time_practiced": "Temps Pratiqué",
+    "questions_answered": "Questions Répondues",
+    "average_score": "Score Moyen",
+    "improvement": "Amélioration",
+    "strengths": "Forces",
+    "areas_to_improve": "Domaines à Améliorer"
+  }
+}

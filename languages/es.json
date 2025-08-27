@@ -1,0 +1,64 @@
+{
+  "app": {
+    "title": "Preparador de Entrevistas IA",
+    "subtitle": "Supera tu Próxima Entrevista con Práctica Potenciada por IA",
+    "welcome": "Bienvenido al Preparador de Entrevistas IA"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "practice": "Práctica",
+    "progress": "Progreso",
+    "study": "Recursos de Estudio",
+    "chat": "Chat IA",
+    "settings": "Configuración"
+  },
+  "buttons": {
+    "start": "Comenzar",
+    "submit": "Enviar",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "upload": "Subir",
+    "analyze": "Analizar",
+    "practice": "Practicar",
+    "end_session": "Terminar Sesión"
+  },
+  "forms": {
+    "job_description": "Descripción del Trabajo",
+    "cv_resume": "CV/Currículum",
+    "upload_file": "Subir Archivo",
+    "paste_text": "Pegar Texto",
+    "difficulty": "Nivel de Dificultad",
+    "domain": "Dominio"
+  },
+  "messages": {
+    "upload_success": "Archivo subido exitosamente",
+    "analysis_complete": "Análisis completado",
+    "session_started": "Sesión de entrevista iniciada",
+    "session_ended": "Sesión de entrevista terminada",
+    "progress_saved": "Progreso guardado"
+  },
+  "errors": {
+    "file_upload_failed": "Error al subir archivo",
+    "analysis_failed": "Error en el análisis",
+    "invalid_input": "Entrada inválida",
+    "session_not_found": "Sesión no encontrada"
+  },
+  "interview": {
+    "technical_questions": "Preguntas Técnicas",
+    "behavioral_questions": "Preguntas de Comportamiento",
+    "follow_up": "Preguntas de Seguimiento",
+    "feedback": "Retroalimentación",
+    "performance": "Rendimiento"
+  },
+  "progress": {
+    "total_sessions": "Sesiones Totales",
+    "time_practiced": "Tiempo Practicado",
+    "questions_answered": "Preguntas Respondidas",
+    "average_score": "Puntuación Promedio",
+    "improvement": "Mejora",
+    "strengths": "Fortalezas",
+    "areas_to_improve": "Áreas a Mejorar"
+  }
+}

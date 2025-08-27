@@ -12,6 +12,14 @@ An intelligent interview preparation tool that helps candidates prepare for inte
 - **❓ Mock Interview Generator**: Domain-specific interview questions (technical, behavioral, situational)
 - **📝 Resume Optimization**: Suggestions for improving CV alignment with job requirements
 
+### Enhanced Features (NEW!)
+- **💬 Real-time AI Chat**: Practice interviews with AI interviewer in real-time conversation
+- **🔗 Job Board Integration**: Import job descriptions directly from LinkedIn, Indeed, and other major job boards
+- **📈 Progress Analytics**: Track your improvement with detailed analytics and performance insights
+- **🌍 Multi-language Support**: Practice interviews in multiple languages (English, Spanish, French, German, etc.)
+- **🏢 Company-specific Guides**: Get tailored preparation for specific companies (Google, Amazon, Microsoft, etc.)
+- **💰 Salary Negotiation Guidance**: Comprehensive salary negotiation strategies and market data
+
 ### Supported Domains
 - Software Engineering & Development
 - Data Science & Analytics
@@ -156,13 +164,13 @@ OPENAI_API_KEY=your-openai-api-key-here
 
 ## 🔮 Future Enhancements
 
-- [ ] Real-time AI chat for interview practice
-- [ ] Integration with job boards (LinkedIn, Indeed)
+- [x] Real-time AI chat for interview practice
+- [x] Integration with job boards (LinkedIn, Indeed)
+- [x] Progress tracking and analytics
+- [x] Multi-language support
+- [x] Company-specific preparation guides
+- [x] Salary negotiation guidance
 - [ ] Video interview simulation
-- [ ] Progress tracking and analytics
-- [ ] Multi-language support
-- [ ] Company-specific preparation guides
-- [ ] Salary negotiation guidance
 - [ ] Interview scheduling integration
 
 ## 🤝 Contributing
